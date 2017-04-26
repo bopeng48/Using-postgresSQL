@@ -23,11 +23,14 @@ function printResult(err, result) {
   if (err) {
     return console.error("error running query", err);
   }
+  console.log("Searching...");
+  console.log("Found "+ result.rows.length +" person(s) by the name "+name);
   result.rows.forEach(function (element) {
     console.log(element.first_name+" "+element.last_name+" born "+dateFormatter(element.birthdate));
   })
-  //console.log(result.rows[0].first_name+" "+result.rows[0].last_name+" born "+dateFormatter(result.rows[0].birthdate));
   client.end();
+
+  //console.log(result.rows[0].first_name+" "+result.rows[0].last_name+" born "+dateFormatter(result.rows[0].birthdate));
 }
 
 client.connect((err) => {
